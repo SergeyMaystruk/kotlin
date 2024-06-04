@@ -1,0 +1,23 @@
+fun countNonNullElements(map: Map<String, Any?>): Int {
+    var nonNullCount = 0
+
+    for (value in map.values) {
+        if (value != null) {
+            nonNullCount++
+        }
+    }
+
+    return nonNullCount
+}
+
+fun main() {
+    val map = mapOf(
+        "key1" to null,
+        "key2" to 10,
+        "key3" to "Hello",
+        "key4" to null
+    )
+
+    val nonNullCount = countNonNullElements(map)
+    println("Кількість не null елементів: $nonNullCount")
+}

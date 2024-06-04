@@ -1,0 +1,64 @@
+abstract class User(
+    val name: String,
+    val age: Int,
+    val location: String
+) {
+    abstract fun register()
+    abstract fun login(username: String, password: String)
+}
+
+class RegularUser(name: String, age: Int, location: String) : User(name, age, location) {
+    override fun register() {
+        println("New user has been registered, name: $name | age: $age | location: $location")
+    }
+
+    override fun login(username: String, password: String) {
+        println("User $name logged in")
+    }
+}
+
+class Admin(name: String, age: Int, location: String) : User(name, age, location) {
+    override fun register() {
+        println("New admin has been registered, name: $name | age: $age | location: $location")
+    }
+
+    override fun login(username: String, password: String) {
+        println("Admin $name logged in")
+    }
+
+    fun manageUsers() {
+        println("Admin $name is managing users")
+    }
+}
+
+class Moderator(name: String, age: Int, location: String) : User(name, age, location) {
+    override fun register() {
+        println("New moderator has been registered, name: $name | age: $age | location: $location")
+    }
+
+    override fun login(username: String, password: String) {
+        println("Moderator $name logged in")
+    }
+
+    fun moderateContent() {
+        println("Moderator $name is moderating content")
+    }
+}
+
+
+fun main() {
+    val regularUser = RegularUser("Іван Петренко", 30, "Київ")
+    val admin = Admin("Олена Сидоренко", 45, "Львів")
+    val moderator = Moderator("Тарас Шевченко", 25, "Харків")
+
+    regularUser.register()
+    regularUser.login("ivan_petrenko", "123456789")
+
+    admin.register()
+    admin.login("olena_sidorenko", "123456789")
+    admin.manageUsers()
+
+    moderator.register()
+    moderator.login("taras_shevchenko", "123456789")
+    moderator.moderateContent()
+}
